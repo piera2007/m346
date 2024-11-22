@@ -1,0 +1,82 @@
+{
+	"Name": "My Estimate",
+	"Gesamtkosten": {
+		"monatlich": "17.16",
+		"Vorauszahlung": "1232.53",
+		"12 Monate": "1438.45"
+	},
+	"Metadaten": {
+		"Währung": "USD",
+		"Gebietsschema": "de_DE",
+		"Erstellt am": "18.11.2024",
+		"Rechtlicher Haftungsausschluss": "Der AWS Pricing Calculator gibt nur einen Überblick über Ihre AWS-Gebühren und enthält keine anfallenden Steuern. Ihre tatsächlichen Gebühren hängen von einer Vielzahl von Faktoren ab, einschließlich Ihrer tatsächlichen Nutzung der AWS-Services.",
+		"URL teilen": "https://calculator.aws/#/estimate?id=2c949cf8c33b458c9fc3a00d87cbdd006764c399"
+	},
+	"Gruppen": {
+		"Services": [
+			{
+				"Servicename": "Amazon EC2 ",
+				"Beschreibung": "Webserver",
+				"Region": "Europa (Zürich)",
+				"Status": "",
+				"Service-Kosten": {
+					"monatlich": "2.86",
+					"Vorauszahlung": "430.99",
+					"12 Monate": "465.31"
+				},
+				"Eigenschaften": {
+					"Tenancy": "Gemeinsame Instances",
+					"Betriebssystem": "Ubuntu Pro",
+					"Workload": "Consistent, Anzahl der Instances: 1",
+					"Erweiterte EC2-Instance": "t3.small",
+					"Pricing strategy": "Compute Savings Plans 3yr  All Upfront",
+					"Überwachung aktivieren": "deaktiviert",
+					"EBS Speichermenge": "20 GB",
+					"DT Eingehend: Not selected": "0 TB pro Monat",
+					"DT Ausgehend: Not selected": "0 TB pro Monat",
+					"DT Intraregional:": "0 TB pro Monat"
+				}
+			},
+			{
+				"Servicename": "Amazon EC2 ",
+				"Beschreibung": "DatenbankService",
+				"Region": "Europa (Zürich)",
+				"Status": "",
+				"Service-Kosten": {
+					"monatlich": "14.30",
+					"Vorauszahlung": "801.54",
+					"12 Monate": "973.14"
+				},
+				"Eigenschaften": {
+					"Tenancy": "Gemeinsame Instances",
+					"Betriebssystem": "Ubuntu Pro",
+					"Workload": "Consistent, Anzahl der Instances: 1",
+					"Erweiterte EC2-Instance": "t3.medium",
+					"Pricing strategy": "Compute Savings Plans 3yr  All Upfront",
+					"Überwachung aktivieren": "deaktiviert",
+					"EBS Speichermenge": "100 GB",
+					"DT Eingehend: Not selected": "0 TB pro Monat",
+					"DT Ausgehend: Not selected": "0 TB pro Monat",
+					"DT Intraregional:": "0 TB pro Monat"
+				}
+			},
+			{
+				"Servicename": "FSX Backup",
+				"Beschreibung": "Backup Service",
+				"Region": "Europa (Zürich)",
+				"Status": "",
+				"Service-Kosten": {
+					"monatlich": "0.00",
+					"Vorauszahlung": "0.00",
+					"12 Monate": "0.00"
+				},
+				"Eigenschaften": {
+					"Warmer Aufbewahrungszeitraum für monatliche Backups": "3 Monate",
+					"Warmer Aufbewahrungszeitraum für tägliche Backups": "4 Tage",
+					"Warmer Aufbewahrungszeitraum für stündliche Backups": "7 Tage",
+					"Menge der zu sichernden Primärdaten": "150 GB"
+				}
+			}
+		]
+	}
+}
