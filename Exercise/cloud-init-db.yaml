@@ -8,8 +8,16 @@ users:
     ssh_authorized_keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3RVy3Kfr4XhlhbZtHhP6PRIvbaNM3j/9A6Co9uFr5ni8rIh/T35GPhK+wQz+5iQHnXp2+Roh2bzEjW3lM/UREn4LQMzK25FHKW4/gnT2SMM+p5fg30+ceIx+g5K6a+aa3qn1w9q3+62kZm9a9NKCzmiXl/eGEeYzlSoqhW8jmXm/9HGcQ87Y8oAUFUIBcVvDcOkZBvudIwRGXGnjHgNuEkNwPg9Fg0BPJwz+SoouDFhb2rmeAT5c2ZAENJREmZqKYHDrXq4LULH6o47lNwkid9QKWo1grR8UfqXVzGiZ+uvGsLyCoZfbPaVOuSwlenBR/ClJCYgcf+maf06gwRKZb aws-key
 ssh_pwauth: false
-disable_root: false 
+disable_root: false
 package_update: true
+package_upgrade: true
 packages:
-  - curl 
-  - wget
+  - mysql-server
+  - ufw
+
+runcmd:
+  - echo "UPDATE mysql.user SET authentication_string=PASSWORD('Passwort123'), plugin='mysql_native_password' WHERE User='root'; FLUSH PRIVILEGES;" | mysql -u root
+  - mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'Passwort123'; GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%'; FLUSH PRIVILEGES;"
+  - ufw allow 3306/tcp
+  - systemctl enable mysql
+  - systemctl restart mysql
