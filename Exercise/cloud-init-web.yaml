@@ -1,0 +1,53 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3RVy3Kfr4XhlhbZtHhP6PRIvbaNM3j/9A6Co9uFr5ni8rIh/T35GPhK+wQz+5iQHnXp2+Roh2bzEjW3lM/UREn4LQMzK25FHKW4/gnT2SMM+p5fg30+ceIx+g5K6a+aa3qn1w9q3+62kZm9a9NKCzmiXl/eGEeYzlSoqhW8jmXm/9HGcQ87Y8oAUFUIBcVvDcOkZBvudIwRGXGnjHgNuEkNwPg9Fg0BPJwz+SoouDFhb2rmeAT5c2ZAENJREmZqKYHDrXq4LULH6o47lNwkid9QKWo1grR8UfqXVzGiZ+uvGsLyCoZfbPaVOuSwlenBR/ClJCYgcf+maf06gwRKZb aws-key
+ssh_pwauth: false
+disable_root: false
+package_update: true
+package_upgrade: true
+packages:
+  - apache2
+  - php
+  - php-mysqli
+  - adminer
+  - php-mysql
+
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <html>
+      <head><title>Home</title></head>
+      <body>
+        <h1>Willkommen auf meinem Webserver!</h1>
+      </body>
+      </html>
+  - path: /var/www/html/info.php
+    content: |
+      <?php
+      phpinfo();
+      ?>
+  - path: /var/www/html/db.php
+    content: |
+      <?php
+      $servername = "172.31.85.195";
+      $username = "admin";
+      $password = "Passwort123";
+      $dbname = "database_kn05";
+
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+      echo "Connected successfully to the database!";
+      $conn->close();
+      ?>
+
+runcmd:
+  - sudo a2enconf adminer
+  - sudo systemctl restart apache2
