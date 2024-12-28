@@ -13,12 +13,11 @@ disable_root: false
 package_update: true
 package_upgrade: true
 packages:
-  - mysql-server
-  - ufw
-
+  - mariadb-server
+  - curl
+  - wget
 runcmd:
-  - echo "UPDATE mysql.user SET authentication_string=PASSWORD('Passwort123'), plugin='mysql_native_password' WHERE User='root'; FLUSH PRIVILEGES;" | mysql -u root
-  - mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'Passwort123'; GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%'; FLUSH PRIVILEGES;"
-  - ufw allow 3306/tcp
+  - sudo mysql -sfu root -e "GRANT ALL ON *.* TO 'admin'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;"
+  - sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
   - systemctl enable mysql
   - systemctl restart mysql
