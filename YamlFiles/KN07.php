@@ -6,10 +6,10 @@ Das ausgeführte Query ist: <i>select Host, User from mysql.user;</i><br /><br /
 Das Resultat: <br />
 <?php
         //database
-        $servername = "127.0.0.1";
+        $servername = "mydb.c7uow88mczpj.us-east-1.rds.amazonaws.com";
         $username = "admin";
-        $password = "???";
-        $dbname = "mysql";
+        $password = "Password";
+        $dbname = "mydb";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
