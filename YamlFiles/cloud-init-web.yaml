@@ -17,7 +17,7 @@ packages:
   - php
   - php-mysqli
   - adminer
-  - libapache2-mod-php¨
+  - libapache2-mod-php
   - wget
   - curl
 
